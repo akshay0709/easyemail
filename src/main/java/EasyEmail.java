@@ -116,9 +116,9 @@ public class EasyEmail {
 
     /**
      * This method attaches files to the email
-     * @param filepath - path of the file
+     * @param file - Actual file to be sent
      */
-    public void addAttachment(String filepath) {
+    public void addAttachment(File file) {
         try {
             message.addHeader("Content-type", "text/HTML; charset=UTF-8");
             message.addHeader("format", "flowed");
@@ -134,9 +134,9 @@ public class EasyEmail {
 
             //Body part for attachment
             bodyPart = new MimeBodyPart();
-            DataSource source = new FileDataSource(filepath);
+            DataSource source = new FileDataSource(file);
             bodyPart.setDataHandler(new DataHandler(source));
-            bodyPart.setFileName(new File(filepath).getName());
+            bodyPart.setFileName(file.getName());
             multiPart.addBodyPart(bodyPart);
             message.setContent(multiPart);
         } catch (MessagingException e) {

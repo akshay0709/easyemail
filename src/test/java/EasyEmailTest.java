@@ -3,10 +3,10 @@ import com.icegreen.greenmail.util.GreenMail;
 import com.icegreen.greenmail.util.ServerSetupTest;
 import org.junit.*;
 import org.junit.rules.TemporaryFolder;
-
 import javax.mail.MessagingException;
 import javax.mail.Multipart;
 import javax.mail.internet.MimeMessage;
+import java.io.File;
 import java.io.IOException;
 import java.security.Security;
 
@@ -74,7 +74,7 @@ public class EasyEmailTest {
     @Test
     public void sendEmailWithAttachmentSSL() throws MessagingException, IOException {
 
-        String file = testFolder.newFile("abc.txt").toString();
+        File file = testFolder.newFile("abc.txt");
 
         Security.setProperty("ssl.SocketFactory.provider", DummySSLSocketFactory.class.getName());
         testServer = new GreenMail(ServerSetupTest.SMTP);
@@ -102,7 +102,7 @@ public class EasyEmailTest {
     @Test
     public void sendEmailWithAttachmentTLS() throws MessagingException, IOException {
 
-        String file = testFolder.newFile("abc.txt").toString();
+        File file = testFolder.newFile("abc.txt");
 
         Security.setProperty("ssl.SocketFactory.provider", DummySSLSocketFactory.class.getName());
         testServer = new GreenMail(ServerSetupTest.SMTP);
