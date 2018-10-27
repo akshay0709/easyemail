@@ -1,6 +1,9 @@
+import javax.activation.DataHandler;
+import javax.activation.FileDataSource;
+import javax.activation.DataSource;
 import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+import javax.mail.internet.*;
+import java.io.File;
 import java.security.InvalidParameterException;
 import java.util.Properties;
 
@@ -16,6 +19,7 @@ public class EasyEmail {
     private static Authenticator auth;
     private static Session session;
     private static Message message;
+    private static String body;
     private static final String LABEL_SMTP_HOST = "mail.smtp.host";
     private static final String LABEL_SMTP_PORT = "mail.smtp.port";
     private static final String LABEL_SMTP_AUTH = "mail.smtp.auth";
@@ -97,15 +101,53 @@ public class EasyEmail {
      * This method can be invoked multiple times.
      * @param toEmail - receiver's email
      * @param subject - email's subject
-     * @param body - email's body
+     * @param strBody - email's body
      */
-    public void send(String toEmail, String subject, String body){
+    public void setBasicInfo(String toEmail, String subject, String strBody) {
+        body = strBody;
         try {
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
             message.setSubject(subject);
             message.setText(body);
-            Transport.send(message);
         } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * This method attaches files to the email
+     * @param filepath - path of the file
+     */
+    public void addAttachment(String filepath) {
+        try {
+            message.addHeader("Content-type", "text/HTML; charset=UTF-8");
+            message.addHeader("format", "flowed");
+            message.addHeader("Content-Transfer-Encoding", "8bit");
+
+            //Message body part
+            BodyPart bodyPart = new MimeBodyPart();
+            bodyPart.setText(body);
+
+            //Multipart for attachment and body
+            Multipart multiPart = new MimeMultipart();
+            multiPart.addBodyPart(bodyPart);
+
+            //Body part for attachment
+            bodyPart = new MimeBodyPart();
+            DataSource source = new FileDataSource(filepath);
+            bodyPart.setDataHandler(new DataHandler(source));
+            bodyPart.setFileName(new File(filepath).getName());
+            multiPart.addBodyPart(bodyPart);
+            message.setContent(multiPart);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void send(){
+        try{
+            Transport.send(message);
+        } catch (MessagingException e){
             e.printStackTrace();
         }
     }
