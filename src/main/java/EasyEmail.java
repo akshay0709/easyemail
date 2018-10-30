@@ -5,6 +5,7 @@ import javax.mail.*;
 import javax.mail.internet.*;
 import java.io.File;
 import java.security.InvalidParameterException;
+import java.util.List;
 import java.util.Properties;
 
 public class EasyEmail {
@@ -139,6 +140,40 @@ public class EasyEmail {
             bodyPart.setFileName(file.getName());
             multiPart.addBodyPart(bodyPart);
             message.setContent(multiPart);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * THis method attaches multiple files to the email
+     * @param files - List of files to be sent
+     */
+    public void addAttachment(List<File> files) {
+        try {
+            message.addHeader("Content-type", "text/HTML; charset=UTF-8");
+            message.addHeader("format", "flowed");
+            message.addHeader("Content-Transfer-Encoding", "8bit");
+
+            //Message body part
+            BodyPart bodyPart = new MimeBodyPart();
+            bodyPart.setText(body);
+
+            //Multipart for attachment and body
+            Multipart multiPart = new MimeMultipart();
+            multiPart.addBodyPart(bodyPart);
+
+            for(File file : files) {
+                //Body part for attachment
+                bodyPart = new MimeBodyPart();
+                DataSource source = new FileDataSource(file);
+                bodyPart.setDataHandler(new DataHandler(source));
+                bodyPart.setFileName(file.getName());
+                multiPart.addBodyPart(bodyPart);
+            }
+
+            message.setContent(multiPart);
+
         } catch (MessagingException e) {
             e.printStackTrace();
         }
