@@ -36,8 +36,8 @@ public class EasyEmailTest {
         testServer.setUser(EMAIL_USER_ADDRESS, USER_NAME ,USER_PASSWORD);
         EasyEmail easyemail = new EasyEmail(LOCALHOST, Integer.toString(ServerSetupTest.SMTP.getPort()), true, "SSL");
         easyemail.setIdentity(EMAIL_USER_ADDRESS, USER_PASSWORD);
-        easyemail.setBasicInfo(EMAIL_TO, EMAIL_SUBJECT, EMAIL_TEXT);
-        easyemail.send();
+        easyemail.setBasicInfo(EMAIL_SUBJECT, EMAIL_TEXT);
+        easyemail.send(EMAIL_TO);
 
         MimeMessage[] messages = testServer.getReceivedMessages();
         Assert.assertNotNull(messages);
@@ -60,8 +60,8 @@ public class EasyEmailTest {
         testServer.setUser(EMAIL_USER_ADDRESS, USER_NAME ,USER_PASSWORD);
         EasyEmail easyemail = new EasyEmail(LOCALHOST, Integer.toString(ServerSetupTest.SMTP.getPort()), true, "TLS");
         easyemail.setIdentity(EMAIL_USER_ADDRESS, USER_PASSWORD);
-        easyemail.setBasicInfo(EMAIL_TO, EMAIL_SUBJECT, EMAIL_TEXT);
-        easyemail.send();
+        easyemail.setBasicInfo(EMAIL_SUBJECT, EMAIL_TEXT);
+        easyemail.send(EMAIL_TO);
 
         MimeMessage[] messages = testServer.getReceivedMessages();
         Assert.assertNotNull(messages);
@@ -84,9 +84,9 @@ public class EasyEmailTest {
         testServer.setUser(EMAIL_USER_ADDRESS, USER_NAME ,USER_PASSWORD);
         EasyEmail easyemail = new EasyEmail(LOCALHOST, Integer.toString(ServerSetupTest.SMTP.getPort()), true, "SSL");
         easyemail.setIdentity(EMAIL_USER_ADDRESS, USER_PASSWORD);
-        easyemail.setBasicInfo(EMAIL_TO, EMAIL_SUBJECT, EMAIL_TEXT);
+        easyemail.setBasicInfo(EMAIL_SUBJECT, EMAIL_TEXT);
         easyemail.addAttachment(file);
-        easyemail.send();
+        easyemail.send(EMAIL_TO);
 
         MimeMessage[] messages = testServer.getReceivedMessages();
         Assert.assertNotNull(messages);
@@ -112,9 +112,9 @@ public class EasyEmailTest {
         testServer.setUser(EMAIL_USER_ADDRESS, USER_NAME ,USER_PASSWORD);
         EasyEmail easyemail = new EasyEmail(LOCALHOST, Integer.toString(ServerSetupTest.SMTP.getPort()), true, "TLS");
         easyemail.setIdentity(EMAIL_USER_ADDRESS, USER_PASSWORD);
-        easyemail.setBasicInfo(EMAIL_TO, EMAIL_SUBJECT, EMAIL_TEXT);
+        easyemail.setBasicInfo(EMAIL_SUBJECT, EMAIL_TEXT);
         easyemail.addAttachment(file);
-        easyemail.send();
+        easyemail.send(EMAIL_TO);
 
         MimeMessage[] messages = testServer.getReceivedMessages();
         Assert.assertNotNull(messages);
@@ -143,9 +143,9 @@ public class EasyEmailTest {
         testServer.setUser(EMAIL_USER_ADDRESS, USER_NAME ,USER_PASSWORD);
         EasyEmail easyemail = new EasyEmail(LOCALHOST, Integer.toString(ServerSetupTest.SMTP.getPort()), true, "SSL");
         easyemail.setIdentity(EMAIL_USER_ADDRESS, USER_PASSWORD);
-        easyemail.setBasicInfo(EMAIL_TO, EMAIL_SUBJECT, EMAIL_TEXT);
+        easyemail.setBasicInfo(EMAIL_SUBJECT, EMAIL_TEXT);
         easyemail.addAttachment(files);
-        easyemail.send();
+        easyemail.send(EMAIL_TO);
 
         MimeMessage[] messages = testServer.getReceivedMessages();
         Assert.assertNotNull(messages);
@@ -174,9 +174,9 @@ public class EasyEmailTest {
         testServer.setUser(EMAIL_USER_ADDRESS, USER_NAME ,USER_PASSWORD);
         EasyEmail easyemail = new EasyEmail(LOCALHOST, Integer.toString(ServerSetupTest.SMTP.getPort()), true, "TLS");
         easyemail.setIdentity(EMAIL_USER_ADDRESS, USER_PASSWORD);
-        easyemail.setBasicInfo(EMAIL_TO, EMAIL_SUBJECT, EMAIL_TEXT);
+        easyemail.setBasicInfo(EMAIL_SUBJECT, EMAIL_TEXT);
         easyemail.addAttachment(files);
-        easyemail.send();
+        easyemail.send(EMAIL_TO);
 
         MimeMessage[] messages = testServer.getReceivedMessages();
         Assert.assertNotNull(messages);

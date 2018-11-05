@@ -30,10 +30,10 @@ public class EasyEmail {
 
 
     /** Set all the configurations at initialization
-     * @param smtpHost - your host
-     * @param port - your smtp port
-     * @param authentication - true for secure
-     * @param authType - TLS or SSL
+     * @param smtpHost SMTP host to be used
+     * @param port Port to be used
+     * @param authentication true for secure
+     * @param authType TLS or SSL
      * */
     EasyEmail(String smtpHost, String port, boolean authentication, String authType){
         SMTP_HOST = smtpHost;
@@ -60,11 +60,10 @@ public class EasyEmail {
 
 
     /**
-     * This method is called to configure sender's credentials,
+     * Configure sender's credentials,
      * establish TLS authentication and create a mail sesion
-     * this should be called only once
-     * @param fromEmail - sender's email
-     * @param password - senders's password for authentication
+     * @param fromEmail sender's email address
+     * @param password  senders's password for authentication
      **/
     public void setIdentity(String fromEmail, String password){
         FROM_EMAIL = fromEmail;
@@ -99,15 +98,13 @@ public class EasyEmail {
 
 
     /**
-     * This method can be invoked multiple times.
-     * @param toEmail - receiver's email
-     * @param subject - email's subject
-     * @param strBody - email's body
+     * Set basic information for email.
+     * @param subject email's subject
+     * @param strBody email's body
      */
-    public void setBasicInfo(String toEmail, String subject, String strBody) {
+    public void setBasicInfo(String subject, String strBody) {
         body = strBody;
         try {
-            message.setRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
             message.setSubject(subject);
             message.setText(body);
         } catch (MessagingException e) {
@@ -116,8 +113,8 @@ public class EasyEmail {
     }
 
     /**
-     * This method attaches files to the email
-     * @param file - Actual file to be sent
+     * Attach file to the email
+     * @param file Actual file to be sent
      */
     public void addAttachment(File file) {
         try {
@@ -146,8 +143,8 @@ public class EasyEmail {
     }
 
     /**
-     * THis method attaches multiple files to the email
-     * @param files - List of files to be sent
+     * Attach list of files to the email
+     * @param files List of files to be sent
      */
     public void addAttachment(List<File> files) {
         try {
@@ -179,8 +176,15 @@ public class EasyEmail {
         }
     }
 
-    public void send(){
+
+    /**
+     * FInal set to send an email
+     * Takes recivers email address as a parameter
+     * @param toEmail email address of the reciever
+     */
+    public void send(String toEmail){
         try{
+            message.setRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
             Transport.send(message);
         } catch (MessagingException e){
             e.printStackTrace();
