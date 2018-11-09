@@ -61,7 +61,7 @@ public class EasyEmail {
 
     /**
      * Configure sender's credentials,
-     * establish TLS authentication and create a mail sesion
+     * establish TLS / SSL authentication and create a mail sesion
      * @param fromEmail sender's email address
      * @param password  senders's password for authentication
      **/
@@ -178,8 +178,9 @@ public class EasyEmail {
 
 
     /**
-     * FInal set to send an email
+     * Final set to send an email
      * Takes recivers email address as a parameter
+     * Can be invoked multiple times to send emails to multiple addresses
      * @param toEmail email address of the reciever
      */
     public void send(String toEmail){
