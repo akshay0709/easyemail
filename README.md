@@ -9,7 +9,7 @@ EasyEmail is a wrapper around JavaMail which allows developers to send event dri
 As a developer you do not need to understand or know the internal configurations to send an email over SMTP in Java, EasyEmail will do it for you behind the scenes. 
 Simply tell EasyEmail what to use and what you want and you are all set.
 
-### Currently, EasyEmail supports following features:
+#### Currently, EasyEmail supports following features:
  - Text email over SSL / TLS
  - Text email with attachments over SSL / TLS
  
