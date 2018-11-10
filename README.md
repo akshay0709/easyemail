@@ -33,7 +33,7 @@ em.setIdentity("sender@xyz.com", "senderspassword");
 em.setBasicInfo("subject", "body");
 ```
 To add single or multiple attachments invoke the following method.</br>
-***Use only one of the following acording to your requirement.***
+***Use only one of the following according to your requirement.***
 
 ```java
 // To send single attachment of type File
@@ -45,7 +45,7 @@ em.addAttachment(files)
 ```
 
 Last step is to send the email to a single / multiple recipients.</br>
-***Use only one of the following acording to your requirement.***
+***Use only one of the following according to your requirement.***
 
 ```java
 // Single recipient
