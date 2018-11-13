@@ -32,13 +32,12 @@ public class EasyEmail {
     /** Set all the configurations at initialization
      * @param smtpHost SMTP host to be used
      * @param port Port to be used
-     * @param authentication true for secure
      * @param authType TLS or SSL
      * */
-    EasyEmail(String smtpHost, String port, boolean authentication, String authType){
+    EasyEmail(String smtpHost, String port, String authType) {
         SMTP_HOST = smtpHost;
         PORT = port;
-        AUTHENTICATION = Boolean.toString(authentication);
+        AUTHENTICATION = Boolean.toString(true);
         properties.put(LABEL_SMTP_HOST, SMTP_HOST);
         properties.put(LABEL_SMTP_PORT, PORT);
         properties.put(LABEL_SMTP_AUTH, AUTHENTICATION);
@@ -65,7 +64,7 @@ public class EasyEmail {
      * @param fromEmail sender's email address
      * @param password  senders's password for authentication
      **/
-    public void setIdentity(String fromEmail, String password){
+    public void setIdentity(String fromEmail, String password) {
         FROM_EMAIL = fromEmail;
         PASSWORD = password;
         auth = new Authenticator() {
@@ -178,16 +177,16 @@ public class EasyEmail {
 
 
     /**
-     * Final set to send an email
+     * Send an email
      * Takes recivers email address as a parameter
      * Can be invoked multiple times to send emails to multiple addresses
      * @param toEmail email address of the reciever
      */
-    public void send(String toEmail){
-        try{
+    public void send(String toEmail) {
+        try {
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
             Transport.send(message);
-        } catch (MessagingException e){
+        } catch (MessagingException e) {
             e.printStackTrace();
         }
     }

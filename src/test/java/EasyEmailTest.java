@@ -32,9 +32,8 @@ public class EasyEmailTest {
         Security.setProperty("ssl.SocketFactory.provider", DummySSLSocketFactory.class.getName());
         testServer = new GreenMail(ServerSetupTest.SMTP);
         testServer.start();
-
         testServer.setUser(EMAIL_USER_ADDRESS, USER_NAME ,USER_PASSWORD);
-        EasyEmail easyemail = new EasyEmail(LOCALHOST, Integer.toString(ServerSetupTest.SMTP.getPort()), true, "SSL");
+        EasyEmail easyemail = new EasyEmail(LOCALHOST, Integer.toString(ServerSetupTest.SMTP.getPort()), "SSL");
         easyemail.setIdentity(EMAIL_USER_ADDRESS, USER_PASSWORD);
         easyemail.setBasicInfo(EMAIL_SUBJECT, EMAIL_TEXT);
         easyemail.send(EMAIL_TO);
@@ -56,9 +55,8 @@ public class EasyEmailTest {
         Security.setProperty("ssl.SocketFactory.provider", DummySSLSocketFactory.class.getName());
         testServer = new GreenMail(ServerSetupTest.SMTP);
         testServer.start();
-
         testServer.setUser(EMAIL_USER_ADDRESS, USER_NAME ,USER_PASSWORD);
-        EasyEmail easyemail = new EasyEmail(LOCALHOST, Integer.toString(ServerSetupTest.SMTP.getPort()), true, "TLS");
+        EasyEmail easyemail = new EasyEmail(LOCALHOST, Integer.toString(ServerSetupTest.SMTP.getPort()),"TLS");
         easyemail.setIdentity(EMAIL_USER_ADDRESS, USER_PASSWORD);
         easyemail.setBasicInfo(EMAIL_SUBJECT, EMAIL_TEXT);
         easyemail.send(EMAIL_TO);
@@ -82,7 +80,7 @@ public class EasyEmailTest {
         testServer = new GreenMail(ServerSetupTest.SMTP);
         testServer.start();
         testServer.setUser(EMAIL_USER_ADDRESS, USER_NAME ,USER_PASSWORD);
-        EasyEmail easyemail = new EasyEmail(LOCALHOST, Integer.toString(ServerSetupTest.SMTP.getPort()), true, "SSL");
+        EasyEmail easyemail = new EasyEmail(LOCALHOST, Integer.toString(ServerSetupTest.SMTP.getPort()),"SSL");
         easyemail.setIdentity(EMAIL_USER_ADDRESS, USER_PASSWORD);
         easyemail.setBasicInfo(EMAIL_SUBJECT, EMAIL_TEXT);
         easyemail.addAttachment(file);
@@ -110,7 +108,7 @@ public class EasyEmailTest {
         testServer = new GreenMail(ServerSetupTest.SMTP);
         testServer.start();
         testServer.setUser(EMAIL_USER_ADDRESS, USER_NAME ,USER_PASSWORD);
-        EasyEmail easyemail = new EasyEmail(LOCALHOST, Integer.toString(ServerSetupTest.SMTP.getPort()), true, "TLS");
+        EasyEmail easyemail = new EasyEmail(LOCALHOST, Integer.toString(ServerSetupTest.SMTP.getPort()), "TLS");
         easyemail.setIdentity(EMAIL_USER_ADDRESS, USER_PASSWORD);
         easyemail.setBasicInfo(EMAIL_SUBJECT, EMAIL_TEXT);
         easyemail.addAttachment(file);
@@ -141,7 +139,7 @@ public class EasyEmailTest {
         testServer = new GreenMail(ServerSetupTest.SMTP);
         testServer.start();
         testServer.setUser(EMAIL_USER_ADDRESS, USER_NAME ,USER_PASSWORD);
-        EasyEmail easyemail = new EasyEmail(LOCALHOST, Integer.toString(ServerSetupTest.SMTP.getPort()), true, "SSL");
+        EasyEmail easyemail = new EasyEmail(LOCALHOST, Integer.toString(ServerSetupTest.SMTP.getPort()), "SSL");
         easyemail.setIdentity(EMAIL_USER_ADDRESS, USER_PASSWORD);
         easyemail.setBasicInfo(EMAIL_SUBJECT, EMAIL_TEXT);
         easyemail.addAttachment(files);
@@ -172,7 +170,7 @@ public class EasyEmailTest {
         testServer = new GreenMail(ServerSetupTest.SMTP);
         testServer.start();
         testServer.setUser(EMAIL_USER_ADDRESS, USER_NAME ,USER_PASSWORD);
-        EasyEmail easyemail = new EasyEmail(LOCALHOST, Integer.toString(ServerSetupTest.SMTP.getPort()), true, "TLS");
+        EasyEmail easyemail = new EasyEmail(LOCALHOST, Integer.toString(ServerSetupTest.SMTP.getPort()), "TLS");
         easyemail.setIdentity(EMAIL_USER_ADDRESS, USER_PASSWORD);
         easyemail.setBasicInfo(EMAIL_SUBJECT, EMAIL_TEXT);
         easyemail.addAttachment(files);
