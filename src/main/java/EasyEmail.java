@@ -27,6 +27,7 @@ public class EasyEmail {
     private static final String LABEL_SMTP_TLS = "mail.smtp.starttls.enable";
     private static final String LABEL_SOCKET_FACTORY = "mail.smtp.socketFactory.class";
     private static final String LABEL_SSL_SOCKET = "javax.net.ssl.SSLSocketFactory";
+    private Flag flag;
 
 
     /** Set all the configurations at initialization
@@ -101,11 +102,38 @@ public class EasyEmail {
      * @param subject email's subject
      * @param strBody email's body
      */
-    public void setBasicInfo(String subject, String strBody) {
+    public EasyEmail setBasicInfo(String subject, String strBody) {
         body = strBody;
         try {
             message.setSubject(subject);
+            //message.setText(body);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+        return this;
+    }
+
+    /**
+     * Sets email body to be plain text
+     * Chained with setBasicInfo
+     */
+    public void isText() {
+        try {
             message.setText(body);
+            flag = Flag.TEXT;
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Sets email body to be plain text
+     * Chained with setBasicInfo
+     */
+    public void isHtml() {
+        try {
+            message.setContent(body, "text/html");
+            flag = Flag.HTML;
         } catch (MessagingException e) {
             e.printStackTrace();
         }
@@ -123,7 +151,12 @@ public class EasyEmail {
 
             //Message body part
             BodyPart bodyPart = new MimeBodyPart();
-            bodyPart.setText(body);
+
+            if (flag == Flag.HTML) {
+                bodyPart.setContent(body, "text/html");
+            } else {
+                bodyPart.setText(body);
+            }
 
             //Multipart for attachment and body
             Multipart multiPart = new MimeMultipart();
@@ -140,7 +173,6 @@ public class EasyEmail {
             e.printStackTrace();
         }
     }
-
     /**
      * Attach list of files to the email
      * @param files List of files to be sent
@@ -153,7 +185,12 @@ public class EasyEmail {
 
             //Message body part
             BodyPart bodyPart = new MimeBodyPart();
-            bodyPart.setText(body);
+
+            if (flag == Flag.HTML) {
+                bodyPart.setContent(body, "text/html");
+            } else {
+                bodyPart.setText(body);
+            }
 
             //Multipart for attachment and body
             Multipart multiPart = new MimeMultipart();
@@ -189,5 +226,10 @@ public class EasyEmail {
         } catch (MessagingException e) {
             e.printStackTrace();
         }
+    }
+
+    //Flags to check type of email
+    enum Flag {
+        TEXT, HTML
     }
 }
