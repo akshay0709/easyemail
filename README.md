@@ -20,17 +20,18 @@ Simply tell EasyEmail what to use and what you want and you are all set.
 To send emails using EasyEmail, you will first have to initialize the library with your configurations, credentials and basic information.
 
 ```java
-// smtp.yourhost.com -> address of your SMTP server
-// yourport -> port number (usually 465 for SSL and 587 for TLS)
-// authtype -> SSL or TLS
+// Your SMTP server configurations (authtype = SSL or TLS)
 EasyEmail em = new EasyEmail("smtp.yourhost.com", "yourport", true, "authtype");
 
 // Senders email and password
 em.setIdentity("sender@xyz.com", "senderspassword");
+```
+```java
+//To send email body as text
+em.setBasicInfo("subject", "emailbody").isText();
 
-// subject -> email's subject
-// body -> email's body
-em.setBasicInfo("subject", "body");
+//To send email body as html
+em.setBasicInfo("subject", "emailbody").isHtml();
 ```
 To add single or multiple attachments invoke the following method.</br>
 ***Use only one of the following according to your requirement.***
@@ -39,7 +40,7 @@ To add single or multiple attachments invoke the following method.</br>
 // To send single attachment of type File
 em.addAttachment(file)
 
-// List of attachments of File to send multiple attachments
+// List of attachments of type File to send multiple attachments
 // List<Files> files = new ArrayList<>();
 em.addAttachment(files)
 ```
