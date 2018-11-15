@@ -10,8 +10,8 @@ As a developer you do not need to understand or know the internal configurations
 Simply tell EasyEmail what to use and what you want and you are all set.
 
 #### Currently, EasyEmail supports following features:
- - Text email over SSL / TLS
- - Text email with attachments over SSL / TLS
+ - Text/Html email over SSL / TLS
+ - Text/Html email with attachments over SSL / TLS
  
 **Note:** EasyEmail doesn't support sending emails without authentication.
 
