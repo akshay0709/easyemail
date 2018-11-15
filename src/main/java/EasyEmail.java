@@ -151,7 +151,6 @@ public class EasyEmail {
 
             //Message body part
             BodyPart bodyPart = new MimeBodyPart();
-
             if (flag == Flag.HTML) {
                 bodyPart.setContent(body, "text/html");
             } else {
@@ -169,6 +168,7 @@ public class EasyEmail {
             bodyPart.setFileName(file.getName());
             multiPart.addBodyPart(bodyPart);
             message.setContent(multiPart);
+
         } catch (MessagingException e) {
             e.printStackTrace();
         }
@@ -182,20 +182,16 @@ public class EasyEmail {
             message.addHeader("Content-type", "text/HTML; charset=UTF-8");
             message.addHeader("format", "flowed");
             message.addHeader("Content-Transfer-Encoding", "8bit");
-
             //Message body part
             BodyPart bodyPart = new MimeBodyPart();
-
             if (flag == Flag.HTML) {
                 bodyPart.setContent(body, "text/html");
             } else {
                 bodyPart.setText(body);
             }
-
             //Multipart for attachment and body
             Multipart multiPart = new MimeMultipart();
             multiPart.addBodyPart(bodyPart);
-
             for(File file : files) {
                 //Body part for attachment
                 bodyPart = new MimeBodyPart();
@@ -204,7 +200,6 @@ public class EasyEmail {
                 bodyPart.setFileName(file.getName());
                 multiPart.addBodyPart(bodyPart);
             }
-
             message.setContent(multiPart);
 
         } catch (MessagingException e) {
