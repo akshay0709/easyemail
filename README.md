@@ -25,8 +25,7 @@ EasyEmail em = new EasyEmail("smtp.yourhost.com", "yourport", true, "authtype");
 
 // Senders email and password
 em.setIdentity("sender@xyz.com", "senderspassword");
-```
-```java
+
 //To send email body as text
 em.setBasicInfo("subject", "emailbody").isText();
 
