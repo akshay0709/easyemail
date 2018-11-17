@@ -1,3 +1,5 @@
+package com.easyemail;
+
 import javax.activation.DataHandler;
 import javax.activation.FileDataSource;
 import javax.activation.DataSource;
@@ -35,7 +37,7 @@ public class EasyEmail {
      * @param port Port to be used
      * @param authType TLS or SSL
      * */
-    EasyEmail(String smtpHost, String port, String authType) {
+    public EasyEmail(String smtpHost, String port, String authType) {
         SMTP_HOST = smtpHost;
         PORT = port;
         AUTHENTICATION = Boolean.toString(true);
