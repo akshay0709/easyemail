@@ -20,13 +20,15 @@ Simply tell EasyEmail what to use and what you want and you are all set.
 To send emails using EasyEmail, you will first have to initialize the library with your configurations, credentials and basic information.
 
 ```java
+// Import package
+import com.easyemail.*;
+
 // Your SMTP server configurations (authtype = SSL or TLS)
 EasyEmail em = new EasyEmail("smtp.yourhost.com", "yourport", true, "authtype");
 
 // Senders email and password
 em.setIdentity("sender@xyz.com", "senderspassword");
-```
-```java
+
 //To send email body as text
 em.setBasicInfo("subject", "emailbody").isText();
 
