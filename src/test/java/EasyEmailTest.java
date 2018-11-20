@@ -28,7 +28,7 @@ public class EasyEmailTest {
 
 
     @Test
-    public void sendEmailWithSSL() throws MessagingException, IOException {
+    public void sendEmailWithSSLText() throws MessagingException, IOException {
 
         Security.setProperty("ssl.SocketFactory.provider", DummySSLSocketFactory.class.getName());
         testServer = new GreenMail(ServerSetupTest.SMTP);
@@ -43,6 +43,7 @@ public class EasyEmailTest {
         Assert.assertNotNull(messages);
         Assert.assertEquals(1, messages.length);
         MimeMessage m = messages[0];
+        Assert.assertTrue(messages[0].getContentType().contains("text/plain"));
         Assert.assertEquals(EMAIL_SUBJECT, m.getSubject());
         Assert.assertTrue(String.valueOf(m.getContent()).contains(EMAIL_TEXT));
         Assert.assertEquals(EMAIL_USER_ADDRESS, m.getFrom()[0].toString());
@@ -51,7 +52,7 @@ public class EasyEmailTest {
     }
 
     @Test
-    public void sendEmailWithTLS() throws MessagingException, IOException {
+    public void sendEmailWithTLSText() throws MessagingException, IOException {
 
         Security.setProperty("ssl.SocketFactory.provider", DummySSLSocketFactory.class.getName());
         testServer = new GreenMail(ServerSetupTest.SMTP);
@@ -66,7 +67,7 @@ public class EasyEmailTest {
         Assert.assertNotNull(messages);
         Assert.assertEquals(1, messages.length);
         MimeMessage m = messages[0];
-        //System.out.print(messages[0].getContentType());
+        Assert.assertTrue(messages[0].getContentType().contains("text/plain"));
         Assert.assertEquals(EMAIL_SUBJECT, m.getSubject());
         Assert.assertTrue(String.valueOf(m.getContent()).contains(EMAIL_TEXT));
         Assert.assertEquals(EMAIL_USER_ADDRESS, m.getFrom()[0].toString());
@@ -74,7 +75,31 @@ public class EasyEmailTest {
     }
 
     @Test
-    public void sendEmailAsHTML() throws MessagingException, IOException {
+    public void sendEmailWithSSLHtml() throws MessagingException, IOException {
+
+        Security.setProperty("ssl.SocketFactory.provider", DummySSLSocketFactory.class.getName());
+        testServer = new GreenMail(ServerSetupTest.SMTP);
+        testServer.start();
+        testServer.setUser(EMAIL_USER_ADDRESS, USER_NAME ,USER_PASSWORD);
+        EasyEmail easyemail = new EasyEmail(LOCALHOST, Integer.toString(ServerSetupTest.SMTP.getPort()), "SSL");
+        easyemail.setIdentity(EMAIL_USER_ADDRESS, USER_PASSWORD);
+        easyemail.setBasicInfo(EMAIL_SUBJECT, EMAIL_TEXT).isHtml();
+        easyemail.send(EMAIL_TO);
+
+        MimeMessage[] messages = testServer.getReceivedMessages();
+        Assert.assertNotNull(messages);
+        Assert.assertEquals(1, messages.length);
+        MimeMessage m = messages[0];
+        Assert.assertTrue(messages[0].getContentType().contains("text/html"));
+        Assert.assertEquals(EMAIL_SUBJECT, m.getSubject());
+        Assert.assertTrue(String.valueOf(m.getContent()).contains(EMAIL_TEXT));
+        Assert.assertEquals(EMAIL_USER_ADDRESS, m.getFrom()[0].toString());
+
+        testServer.stop();
+    }
+
+    @Test
+    public void sendEmailWithTLSHtml() throws MessagingException, IOException {
 
         Security.setProperty("ssl.SocketFactory.provider", DummySSLSocketFactory.class.getName());
         testServer = new GreenMail(ServerSetupTest.SMTP);
