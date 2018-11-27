@@ -17,7 +17,7 @@ Simply tell EasyEmail what to use and what you want and you are all set.
 
 ## Usage
 
-To send emails using EasyEmail, you will first have to initialize the library with your configurations, credentials and basic information.
+To send simple emails using EasyEmail, refer the following code snippet:
 
 ```java
 // Import package
@@ -32,12 +32,18 @@ em.setIdentity("sender@xyz.com", "senderspassword");
 //To send email body as text
 em.setBasicInfo("subject", "emailbody").isText();
 
+// recipient
+em.send("reciever@xyz.com");
+```
+
+***To send an email as HTML***
+
+```java
 //To send email body as html
 em.setBasicInfo("subject", "emailbody").isHtml();
 ```
-To add single or multiple attachments invoke the following method.</br>
-***Use only one of the following according to your requirement.***
 
+***To send email with attachments***
 ```java
 // To send single attachment of type File
 em.addAttachment(file)
@@ -46,14 +52,9 @@ em.addAttachment(file)
 // List<Files> files = new ArrayList<>();
 em.addAttachment(files)
 ```
-
-Last step is to send the email to a single / multiple recipients.</br>
-***Use only one of the following according to your requirement.***
-
+ 
+***To send email to multiple recipients***
 ```java
-// Single recipient
-em.send("reciever@xyz.com");
-
 // Multiple recipients
 //List<String> emails = new ArrayList<>()
 for (String email : emails) {
