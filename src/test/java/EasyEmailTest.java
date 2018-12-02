@@ -36,7 +36,7 @@ public class EasyEmailTest {
         testServer.setUser(EMAIL_USER_ADDRESS, USER_NAME ,USER_PASSWORD);
         EasyEmail easyemail = new EasyEmail(LOCALHOST, Integer.toString(ServerSetupTest.SMTP.getPort()), "SSL");
         easyemail.setIdentity(EMAIL_USER_ADDRESS, USER_PASSWORD);
-        easyemail.setBasicInfo(EMAIL_SUBJECT, EMAIL_TEXT).isText();
+        easyemail.setBasicInfo(EMAIL_SUBJECT, EMAIL_TEXT).toText();
         easyemail.send(EMAIL_TO);
 
         MimeMessage[] messages = testServer.getReceivedMessages();
@@ -60,7 +60,7 @@ public class EasyEmailTest {
         testServer.setUser(EMAIL_USER_ADDRESS, USER_NAME ,USER_PASSWORD);
         EasyEmail easyemail = new EasyEmail(LOCALHOST, Integer.toString(ServerSetupTest.SMTP.getPort()),"TLS");
         easyemail.setIdentity(EMAIL_USER_ADDRESS, USER_PASSWORD);
-        easyemail.setBasicInfo(EMAIL_SUBJECT, EMAIL_TEXT).isText();
+        easyemail.setBasicInfo(EMAIL_SUBJECT, EMAIL_TEXT).toText();
         easyemail.send(EMAIL_TO);
 
         MimeMessage[] messages = testServer.getReceivedMessages();
@@ -83,7 +83,7 @@ public class EasyEmailTest {
         testServer.setUser(EMAIL_USER_ADDRESS, USER_NAME ,USER_PASSWORD);
         EasyEmail easyemail = new EasyEmail(LOCALHOST, Integer.toString(ServerSetupTest.SMTP.getPort()), "SSL");
         easyemail.setIdentity(EMAIL_USER_ADDRESS, USER_PASSWORD);
-        easyemail.setBasicInfo(EMAIL_SUBJECT, EMAIL_TEXT).isHtml();
+        easyemail.setBasicInfo(EMAIL_SUBJECT, EMAIL_TEXT).toHtml();
         easyemail.send(EMAIL_TO);
 
         MimeMessage[] messages = testServer.getReceivedMessages();
@@ -107,7 +107,7 @@ public class EasyEmailTest {
         testServer.setUser(EMAIL_USER_ADDRESS, USER_NAME ,USER_PASSWORD);
         EasyEmail easyemail = new EasyEmail(LOCALHOST, Integer.toString(ServerSetupTest.SMTP.getPort()),"TLS");
         easyemail.setIdentity(EMAIL_USER_ADDRESS, USER_PASSWORD);
-        easyemail.setBasicInfo(EMAIL_SUBJECT, EMAIL_TEXT).isHtml();
+        easyemail.setBasicInfo(EMAIL_SUBJECT, EMAIL_TEXT).toHtml();
         easyemail.send(EMAIL_TO);
 
         MimeMessage[] messages = testServer.getReceivedMessages();
@@ -132,7 +132,7 @@ public class EasyEmailTest {
         testServer.setUser(EMAIL_USER_ADDRESS, USER_NAME ,USER_PASSWORD);
         EasyEmail easyemail = new EasyEmail(LOCALHOST, Integer.toString(ServerSetupTest.SMTP.getPort()),"SSL");
         easyemail.setIdentity(EMAIL_USER_ADDRESS, USER_PASSWORD);
-        easyemail.setBasicInfo(EMAIL_SUBJECT, EMAIL_TEXT).isText();
+        easyemail.setBasicInfo(EMAIL_SUBJECT, EMAIL_TEXT).toText();
         easyemail.addAttachment(file);
         easyemail.send(EMAIL_TO);
 
@@ -160,7 +160,7 @@ public class EasyEmailTest {
         testServer.setUser(EMAIL_USER_ADDRESS, USER_NAME ,USER_PASSWORD);
         EasyEmail easyemail = new EasyEmail(LOCALHOST, Integer.toString(ServerSetupTest.SMTP.getPort()), "TLS");
         easyemail.setIdentity(EMAIL_USER_ADDRESS, USER_PASSWORD);
-        easyemail.setBasicInfo(EMAIL_SUBJECT, EMAIL_TEXT).isText();
+        easyemail.setBasicInfo(EMAIL_SUBJECT, EMAIL_TEXT).toText();
         easyemail.addAttachment(file);
         easyemail.send(EMAIL_TO);
 
@@ -191,7 +191,7 @@ public class EasyEmailTest {
         testServer.setUser(EMAIL_USER_ADDRESS, USER_NAME ,USER_PASSWORD);
         EasyEmail easyemail = new EasyEmail(LOCALHOST, Integer.toString(ServerSetupTest.SMTP.getPort()), "SSL");
         easyemail.setIdentity(EMAIL_USER_ADDRESS, USER_PASSWORD);
-        easyemail.setBasicInfo(EMAIL_SUBJECT, EMAIL_TEXT).isText();
+        easyemail.setBasicInfo(EMAIL_SUBJECT, EMAIL_TEXT).toText();
         easyemail.addAttachment(files);
         easyemail.send(EMAIL_TO);
 
@@ -222,7 +222,7 @@ public class EasyEmailTest {
         testServer.setUser(EMAIL_USER_ADDRESS, USER_NAME ,USER_PASSWORD);
         EasyEmail easyemail = new EasyEmail(LOCALHOST, Integer.toString(ServerSetupTest.SMTP.getPort()), "TLS");
         easyemail.setIdentity(EMAIL_USER_ADDRESS, USER_PASSWORD);
-        easyemail.setBasicInfo(EMAIL_SUBJECT, EMAIL_TEXT).isText();
+        easyemail.setBasicInfo(EMAIL_SUBJECT, EMAIL_TEXT).toText();
         easyemail.addAttachment(files);
         easyemail.send(EMAIL_TO);
 

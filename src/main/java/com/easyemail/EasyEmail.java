@@ -65,7 +65,7 @@ public class EasyEmail {
      * Configure sender's credentials,
      * establish TLS / SSL authentication and create a mail sesion
      * @param fromEmail sender's email address
-     * @param password  senders's password for authentication
+     * @param password  senders's password for authenticationz
      **/
     public void setIdentity(String fromEmail, String password) {
         FROM_EMAIL = fromEmail;
@@ -119,7 +119,7 @@ public class EasyEmail {
      * Sets email body to be plain text
      * Chained with setBasicInfo
      */
-    public void isText() {
+    public void toText() {
         try {
             message.setText(body);
             flag = Flag.TEXT;
@@ -132,7 +132,7 @@ public class EasyEmail {
      * Sets email body to be plain text
      * Chained with setBasicInfo
      */
-    public void isHtml() {
+    public void toHtml() {
         try {
             message.setContent(body, "text/html");
             flag = Flag.HTML;
