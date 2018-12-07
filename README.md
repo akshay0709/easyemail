@@ -24,7 +24,7 @@ To send simple emails using EasyEmail, refer the following code snippet:
 import com.easyemail.*;
 
 // Your SMTP server configurations (authtype = SSL or TLS)
-EasyEmail em = new EasyEmail("smtp.yourhost.com", "yourport", true, "authtype");
+EasyEmail em = new EasyEmail("smtp.yourhost.com", "yourport", "authtype");
 
 // Senders email and password
 em.setIdentity("sender@xyz.com", "senderspassword");
