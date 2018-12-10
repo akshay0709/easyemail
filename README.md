@@ -24,13 +24,13 @@ To send simple emails using EasyEmail, refer the following code snippet:
 package com.github.easyemail.*;
 
 // Your SMTP server configurations (authtype = SSL or TLS)
-EasyEmail em = new EasyEmail("smtp.yourhost.com", "yourport", true, "authtype");
+EasyEmail em = new EasyEmail("smtp.yourhost.com", "yourport", "authtype");
 
 // Senders email and password
 em.setIdentity("sender@xyz.com", "senderspassword");
 
 //To send email body as text
-em.setBasicInfo("subject", "emailbody").isText();
+em.setBasicInfo("subject", "emailbody").toText();
 
 // recipient
 em.send("reciever@xyz.com");
@@ -40,7 +40,7 @@ em.send("reciever@xyz.com");
 
 ```java
 //To send email body as html
-em.setBasicInfo("subject", "emailbody").isHtml();
+em.setBasicInfo("subject", "emailbody").toHtml();
 ```
 
 ***To send email with attachments***
