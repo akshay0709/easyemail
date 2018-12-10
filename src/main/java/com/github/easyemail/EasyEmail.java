@@ -1,4 +1,4 @@
-package com.easyemail;
+package com.github.easyemail;
 
 import javax.activation.DataHandler;
 import javax.activation.FileDataSource;
