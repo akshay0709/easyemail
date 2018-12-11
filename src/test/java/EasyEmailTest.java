@@ -1,4 +1,4 @@
-import com.github.easyemail.*;
+import com.github.akshay0709.easyemail.*;
 import com.icegreen.greenmail.util.DummySSLSocketFactory;
 import com.icegreen.greenmail.util.GreenMail;
 import com.icegreen.greenmail.util.ServerSetupTest;

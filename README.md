@@ -21,7 +21,7 @@ To send simple emails using EasyEmail, refer the following code snippet:
 
 ```java
 // Import package
-package com.github.easyemail.*;
+package com.github.akshay0709.easyemail.*;
 
 // Your SMTP server configurations (authtype = SSL or TLS)
 EasyEmail em = new EasyEmail("smtp.yourhost.com", "yourport", "authtype");
