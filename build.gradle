@@ -26,43 +26,45 @@ signing {
     sign configurations.archives
 }
 
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+if(project.hasProperty('ossrhUsername') && project.hasProperty('ossrhPassword')){
+    uploadArchives {
+        repositories {
+            mavenDeployer {
+                beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
 
-            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
-                authentication(userName: ossrhUsername, password: ossrhPassword)
-            }
+                repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                    authentication(userName: ossrhUsername, password: ossrhPassword)
+                }
 
-            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
-                authentication(userName: ossrhUsername, password: ossrhPassword)
-            }
+                snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+                    authentication(userName: ossrhUsername, password: ossrhPassword)
+                }
 
-            pom.project {
-                name 'EasyEmail'
-                packaging 'jar'
-                description 'EasyEmail is an open source and easy to use library to send event driven emails via Java code.'
-                url 'https://github.com/akshay0709/easyemail'
-
-                scm {
-                    connection 'https://github.com/akshay0709/easyemail.git'
-                    developerConnection 'git@github.com:akshay0709/easyemail.git'
+                pom.project {
+                    name 'EasyEmail'
+                    packaging 'jar'
+                    description 'EasyEmail is an open source and easy to use library to send event driven emails via Java code.'
                     url 'https://github.com/akshay0709/easyemail'
-                }
 
-                licenses {
-                    license {
-                        name 'MIT License'
-                        url 'https://github.com/akshay0709/easyemail/blob/master/LICENSE.txt'
+                    scm {
+                        connection 'https://github.com/akshay0709/easyemail.git'
+                        developerConnection 'git@github.com:akshay0709/easyemail.git'
+                        url 'https://github.com/akshay0709/easyemail'
                     }
-                }
 
-                developers {
-                    developer {
-                        id 'akshay0709'
-                        name 'Akshay Pawar'
-                        email 'akshay070993@gmail.com'
+                    licenses {
+                        license {
+                            name 'MIT License'
+                            url 'https://github.com/akshay0709/easyemail/blob/master/LICENSE.txt'
+                        }
+                    }
+
+                    developers {
+                        developer {
+                            id 'akshay0709'
+                            name 'Akshay Pawar'
+                            email 'akshay070993@gmail.com'
+                        }
                     }
                 }
             }
