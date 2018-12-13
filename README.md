@@ -1,6 +1,7 @@
 # EasyEmail
 
 [![Build Status](https://travis-ci.com/akshay0709/easyemail.svg?token=odjGeysjx21sHAzR3xQp&branch=master)](https://travis-ci.com/akshay0709/easyemail)
+[![Known Vulnerabilities](https://snyk.io/test/github/akshay0709/easyemail/badge.svg)](https://snyk.io/test/github/akshay0709/easyemail)
 
 ## Summary
 
