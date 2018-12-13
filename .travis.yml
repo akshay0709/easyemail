@@ -3,5 +3,7 @@ jdk:
   - oraclejdk8
   - openjdk8
 
+install: true
+
 script:
   - ./gradlew build -x javadocJar -x sourcesJar -x signArchives
