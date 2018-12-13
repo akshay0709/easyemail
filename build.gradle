@@ -26,6 +26,7 @@ signing {
     sign configurations.archives
 }
 
+if(project.hasProperty('ossrhUsername') && project.hasProperty('ossrhPassword')){
     uploadArchives {
         repositories {
             mavenDeployer {
@@ -69,6 +70,7 @@ signing {
             }
         }
     }
+}
 
 repositories {
     mavenCentral()
