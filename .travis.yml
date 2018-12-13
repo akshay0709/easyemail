@@ -5,5 +5,4 @@ jdk:
 
 script:
   - ./gradlew
-  - gradle build
-  - gradle test
+  - gradle build -x uploadArchives
