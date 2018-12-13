@@ -4,4 +4,4 @@ jdk:
   - openjdk8
 
 script:
-  - ./gradlew build -x javadocJar -x sourcesJar -x artifacts -x signing -x signArchives -x signArchives
+  - ./gradlew build -x javadocJar -x sourcesJar -x signArchives
