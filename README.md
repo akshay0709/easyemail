@@ -16,6 +16,22 @@ Simply tell EasyEmail what to use and what you want and you are all set.
  
 **Note:** EasyEmail doesn't support sending emails without authentication.
 
+## Adding EasyEmail to your build
+Maven:
+```
+<dependency>
+  <groupId>com.github.akshay0709</groupId>
+  <artifactId>easyemail</artifactId>
+  <version>1.0.0</version>
+</dependency>
+```
+Gradle:
+```
+dependencies {
+ compile 'com.github.akshay0709:easyemail:1.0.0'
+}
+```
+
 ## Usage
 
 To send simple emails using EasyEmail, refer the following code snippet:
