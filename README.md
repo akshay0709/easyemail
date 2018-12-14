@@ -2,12 +2,13 @@
 
 [![Build Status](https://travis-ci.com/akshay0709/easyemail.svg?token=odjGeysjx21sHAzR3xQp&branch=master)](https://travis-ci.com/akshay0709/easyemail)
 [![Known Vulnerabilities](https://snyk.io/test/github/akshay0709/easyemail/badge.svg)](https://snyk.io/test/github/akshay0709/easyemail)
+[![Maven Central](https://img.shields.io/maven-central/v/com.github.akshay0709/easyemail.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.github.akshay0709%22%20AND%20a:%22easyemail%22)
 
 ## Summary
 
 EasyEmail is an open source and easy to use library to send event driven emails via Java code.
 EasyEmail is a wrapper around JavaMail which allows developers to send event driven emails with less than 10 lines of code.
-As a developer you do not need to understand or know the internal configurations to send an email over SMTP in Java, EasyEmail will do it for you behind the scenes. 
+As a developer you do not need to understand or know the internal configurations to send an email over SMTP in Java, EasyEmail will do it for you behind the scenes. EasyEmail is a lightweight and **5.32kb** in size.
 Simply tell EasyEmail what to use and what you want and you are all set.
 
 #### Currently, EasyEmail supports following features:
@@ -18,7 +19,7 @@ Simply tell EasyEmail what to use and what you want and you are all set.
 
 ## Adding EasyEmail to your build
 Maven:
-```
+```xml
 <dependency>
   <groupId>com.github.akshay0709</groupId>
   <artifactId>easyemail</artifactId>
@@ -26,7 +27,7 @@ Maven:
 </dependency>
 ```
 Gradle:
-```
+```gradle
 dependencies {
  compile 'com.github.akshay0709:easyemail:1.0.0'
 }
